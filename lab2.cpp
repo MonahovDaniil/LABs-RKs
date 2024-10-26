@@ -67,7 +67,7 @@ void replaceLetters(const char* str) {
         destPtr++;
     }
     *destPtr = '\0';
-    cout << "Новая строка: " << destination << endl;
+    cout << "ГЌГ®ГўГ Гї Г±ГІГ°Г®ГЄГ : " << destination << endl;
 }
 int matchWord(const char* str, const char* delimiters) {
     char buffer[300];
@@ -93,23 +93,23 @@ char* longestCommonSubstring(const char* str1, const char* str2) {
     int len2 = lengthOfWord(str2);
     int maxLength = 0;
     int endIndex = 0;
-    // Проходим по каждому символу первого слова
+    // ГЏГ°Г®ГµГ®Г¤ГЁГ¬ ГЇГ® ГЄГ Г¦Г¤Г®Г¬Гі Г±ГЁГ¬ГўГ®Г«Гі ГЇГҐГ°ГўГ®ГЈГ® Г±Г«Г®ГўГ 
     for (int i = 0; i < len1; i++) {
         for (int j = 0; j < len2; j++) {
-            // Если символы совпадают, проверяем на наличие подстроки
+            // Г…Г±Г«ГЁ Г±ГЁГ¬ГўГ®Г«Г» Г±Г®ГўГЇГ Г¤Г ГѕГІ, ГЇГ°Г®ГўГҐГ°ГїГҐГ¬ Г­Г  Г­Г Г«ГЁГ·ГЁГҐ ГЇГ®Г¤Г±ГІГ°Г®ГЄГЁ
             if (str1[i] == str2[j]) {
                 int length = 0;
                 const char* p1 = str1 + i;
                 const char* p2 = str2 + j;
 
-                // Сравниваем подстроки
+                // Г‘Г°Г ГўГ­ГЁГўГ ГҐГ¬ ГЇГ®Г¤Г±ГІГ°Г®ГЄГЁ
                 while (*p1 && *p2 && *p1 == *p2) {
                     length++;
                     p1++;
                     p2++;
                 }
 
-                // Если длина подстроки больше предыдущей, обновляем
+                // Г…Г±Г«ГЁ Г¤Г«ГЁГ­Г  ГЇГ®Г¤Г±ГІГ°Г®ГЄГЁ ГЎГ®Г«ГјГёГҐ ГЇГ°ГҐГ¤Г»Г¤ГіГ№ГҐГ©, Г®ГЎГ­Г®ГўГ«ГїГҐГ¬
                 if (length > maxLength) {
                     maxLength = length;
                     endIndex = i;
@@ -118,13 +118,13 @@ char* longestCommonSubstring(const char* str1, const char* str2) {
         }
     }
 
-    // Если не найдено общей подстроки, возвращаем nullptr
+    // Г…Г±Г«ГЁ Г­ГҐ Г­Г Г©Г¤ГҐГ­Г® Г®ГЎГ№ГҐГ© ГЇГ®Г¤Г±ГІГ°Г®ГЄГЁ, ГўГ®Г§ГўГ°Г Г№Г ГҐГ¬ nullptr
     if (maxLength == 0) {
         return nullptr;
     }
     char* commonSubstring = new char[maxLength + 1];
-    std::strncpy(commonSubstring, str1 + endIndex, maxLength);
-    commonSubstring[maxLength] = '\0'; // Завершаем строку
+    strncpy(commonSubstring, str1 + endIndex, maxLength);
+    commonSubstring[maxLength] = '\0'; // Г‡Г ГўГҐГ°ГёГ ГҐГ¬ Г±ГІГ°Г®ГЄГі
 
     return commonSubstring;
 }
@@ -161,17 +161,17 @@ char* subString(char* words[10]) {
             token = strtok(nullptr, delimiters);
         }
 
-        cout << "Количество слов, начинающихся с буквы a: " << numberWords(str, delimiters) << endl;
-        cout << "Длина самого короткого слова: " << shortWord(str, delimiters) << endl;
-        cout << "Количество букв a в последнем слове: " << aCount(str, delimiters) << endl;
+        cout << "ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г±Г«Г®Гў, Г­Г Г·ГЁГ­Г ГѕГ№ГЁГµГ±Гї Г± ГЎГіГЄГўГ» a: " << numberWords(str, delimiters) << endl;
+        cout << "Г„Г«ГЁГ­Г  Г±Г Г¬Г®ГЈГ® ГЄГ®Г°Г®ГІГЄГ®ГЈГ® Г±Г«Г®ГўГ : " << shortWord(str, delimiters) << endl;
+        cout << "ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЎГіГЄГў a Гў ГЇГ®Г±Г«ГҐГ¤Г­ГҐГ¬ Г±Г«Г®ГўГҐ: " << aCount(str, delimiters) << endl;
         replaceLetters(str);
-        cout << "Количество слов, у которых первый и последний символы совпадают: " << matchWord(str, delimiters) << endl;
+        cout << "ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г±Г«Г®Гў, Гі ГЄГ®ГІГ®Г°Г»Гµ ГЇГҐГ°ГўГ»Г© ГЁ ГЇГ®Г±Г«ГҐГ¤Г­ГЁГ© Г±ГЁГ¬ГўГ®Г«Г» Г±Г®ГўГЇГ Г¤Г ГѕГІ: " << matchWord(str, delimiters) << endl;
         char* commonSubString = subString(words);
         if (commonSubString) {
-            cout << "Самая короткая общая подстрока: " << subString(words) << endl;
+            cout << "Г‘Г Г¬Г Гї ГЄГ®Г°Г®ГІГЄГ Гї Г®ГЎГ№Г Гї ГЇГ®Г¤Г±ГІГ°Г®ГЄГ : " << subString(words) << endl;
         }
         else {
-            cout << "Общая подстрока не найдена" << endl;
+            cout << "ГЋГЎГ№Г Гї ГЇГ®Г¤Г±ГІГ°Г®ГЄГ  Г­ГҐ Г­Г Г©Г¤ГҐГ­Г " << endl;
         }
         return 0;
     }
